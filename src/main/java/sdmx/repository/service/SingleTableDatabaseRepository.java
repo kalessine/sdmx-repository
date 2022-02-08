@@ -82,7 +82,7 @@ public class SingleTableDatabaseRepository {
     public SingleTableDatabaseRepository() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            ConnectionFactory connectionFactory = new DriverManagerConnectionFactory("jdbc:mysql://localhost:3306/repository", "root", "Possumfeb182");
+            ConnectionFactory connectionFactory = new DriverManagerConnectionFactory("jdbc:mysql://localhost:3306/repository", "root", "redacted");
             PoolableConnectionFactory poolableConnectionFactory;
             poolableConnectionFactory = new PoolableConnectionFactory(connectionFactory, null);
             GenericObjectPool connectionPool = new GenericObjectPool(poolableConnectionFactory);
