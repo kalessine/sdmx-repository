@@ -77,6 +77,17 @@ public class DataflowUtil {
             return null;
         }
     }
+    public static Dataflow findDataflow(EntityManager em,String agencyid, String id) {
+        try {
+            Query q = em.createQuery("select d from Dataflow d where d.agencyid=:agency and d.id=:id");
+            q.setParameter("agency", agencyid);
+            q.setParameter("id", id);
+            return (sdmx.repository.entities.Dataflow) q.getSingleResult();
+        } catch (Exception ex) {
+            //ex.printStackTrace();
+            return null;
+        }
+    }
 
     public static List<sdmx.repository.entities.Dataflow> searchDataflow(EntityManager em, String agency, String id, String version) {
         if ("*".equals(version) && "all".equals(id) && "all".equals(agency)) {

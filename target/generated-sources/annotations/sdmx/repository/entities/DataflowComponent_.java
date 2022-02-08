@@ -7,7 +7,7 @@ import sdmx.repository.entities.ComponentValue;
 import sdmx.repository.entities.Dataflow;
 import sdmx.repository.entities.DataflowComponentPK;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2022-02-08T20:48:49", comments="EclipseLink-2.7.7.v20200504-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2022-02-09T05:52:35", comments="EclipseLink-2.7.7.v20200504-rNA")
 @StaticMetamodel(DataflowComponent.class)
 public class DataflowComponent_ { 
 
