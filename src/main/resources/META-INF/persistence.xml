@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="sdmxrepositoryPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <class>sdmx.repository.entities.Dataflow</class>
+    <class>sdmx.repository.entities.Annotated</class>
+    <class>sdmx.repository.entities.Language</class>
+    <class>sdmx.repository.entities.DataStructureReference</class>
+    <class>sdmx.repository.entities.DataflowComponent</class>
+    <class>sdmx.repository.entities.ComponentValue</class>
+    <class>sdmx.repository.entities.Name</class>
+    <class>sdmx.repository.entities.Annotation</class>
+    <class>sdmx.repository.entities.NameText</class>
+    <class>sdmx.repository.entities.AnnotationText</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/repository?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="Possumfeb182"/>
+    </properties>
+  </persistence-unit>
+</persistence>
