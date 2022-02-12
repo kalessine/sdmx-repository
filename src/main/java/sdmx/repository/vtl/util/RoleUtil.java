@@ -16,9 +16,9 @@ import sdmx.repository.vtl.entities.Role;
  * @author jsg
  */
 public class RoleUtil {
-    private static sdmx.repository.vtl.entities.Role IDENTIFIER = new sdmx.repository.vtl.entities.Role(1);
-    private static sdmx.repository.vtl.entities.Role MEASURE = new sdmx.repository.vtl.entities.Role(2);
-    private static sdmx.repository.vtl.entities.Role ATTRIBUTE = new sdmx.repository.vtl.entities.Role(3);
+    public static sdmx.repository.vtl.entities.Role IDENTIFIER = new sdmx.repository.vtl.entities.Role(1);
+    public static sdmx.repository.vtl.entities.Role MEASURE = new sdmx.repository.vtl.entities.Role(2);
+    public static sdmx.repository.vtl.entities.Role ATTRIBUTE = new sdmx.repository.vtl.entities.Role(3);
 
     static {
         IDENTIFIER.setName("Identifier");
@@ -37,9 +37,9 @@ public class RoleUtil {
     }
     public static fr.insee.vtl.model.Dataset.Role lookup(int i) {
         switch(i){
-            case 0:return fr.insee.vtl.model.Dataset.Role.IDENTIFIER;
-            case 1:return fr.insee.vtl.model.Dataset.Role.MEASURE;
-            case 2:return fr.insee.vtl.model.Dataset.Role.ATTRIBUTE;
+            case 1:return fr.insee.vtl.model.Dataset.Role.IDENTIFIER;
+            case 2:return fr.insee.vtl.model.Dataset.Role.MEASURE;
+            case 3:return fr.insee.vtl.model.Dataset.Role.ATTRIBUTE;
         }
         return null;
     }

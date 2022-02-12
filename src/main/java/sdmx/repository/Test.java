@@ -37,9 +37,8 @@ public class Test {
                     Map.of("var1",Dataset.Role.IDENTIFIER,"var2",Dataset.Role.IDENTIFIER,"var3",Dataset.Role.MEASURE)
             );
             VTLRepository vtl = new VTLDatabaseRepository();
-            System.out.println(vtl.getDataset("test"));
-            //vtl.createDataset("test", dataset);
-            //vtl.appendDataset("test", dataset);
+            vtl.createDataset("test", dataset);
+            vtl.appendDataset("test", dataset);
             
         } catch (RepositoryException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);

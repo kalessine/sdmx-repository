@@ -30,14 +30,13 @@ public class DatasetComponentUtil {
         dfc.setDatasetComponentPK(pk);
         dfc.setType(comp.getType().getName());
         if(comp.getRole().equals(Dataset.Role.IDENTIFIER)){
-            dfc.setRole(RoleUtil.ROLES[0].getId());
-
+            dfc.setRole(RoleUtil.IDENTIFIER.getId());
         }
         else if(comp.getRole().equals(Dataset.Role.MEASURE)){
-            dfc.setRole(RoleUtil.ROLES[1].getId());
+            dfc.setRole(RoleUtil.MEASURE.getId());
         }
         else if(comp.getRole().equals(Dataset.Role.ATTRIBUTE)){
-            dfc.setRole(RoleUtil.ROLES[2].getId());
+            dfc.setRole(RoleUtil.ATTRIBUTE.getId());
         }
         return dfc;
     }

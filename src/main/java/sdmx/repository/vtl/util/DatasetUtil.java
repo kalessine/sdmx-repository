@@ -39,9 +39,15 @@ public class DatasetUtil {
         em.getTransaction().commit();
         em.refresh(ds1);
         while(it.hasNext()) {
-            comps.add(DatasetComponentUtil.createDatabaseVTLComponent(em, ds1, it.next().getValue(), count++));
+            String key = it.next().getKey();
+            Component val = df.getDataStructure().get(key);
+            comps.add(DatasetComponentUtil.createDatabaseVTLComponent(em, ds1, val, df.getDataStructure().size()-df.getDataStructure().indexOfKey(key)));
         }
         ds1.setDatasetComponentList(comps);
+        em.getTransaction().begin();
+        em.persist(ds1);
+        em.getTransaction().commit();
+        em.refresh(ds1);
         return ds1;
     }
     public static Dataset findDataset(EntityManager em,String name) {
@@ -61,6 +67,7 @@ public class DatasetUtil {
             try {
                 result.add(DatasetComponentUtil.toComponent(dsc));
             } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
                 Logger.getLogger(DatasetUtil.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

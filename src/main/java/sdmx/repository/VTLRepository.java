@@ -12,7 +12,7 @@ import sdmx.repository.exception.RepositoryException;
 
 public interface VTLRepository {
 public boolean hasDataset(String name);
-public void createDataset(String name, Structured s) throws RepositoryException;
+public void createDataset(String name, Dataset s) throws RepositoryException;
 public void deleteDataset(String name) throws RepositoryException;
 public void appendDataset(String name, fr.insee.vtl.model.Dataset ds) throws RepositoryException;
 public void replaceDataset(String name, fr.insee.vtl.model.Dataset ds) throws RepositoryException;

@@ -127,7 +127,7 @@ public class VTLDatabaseRepository implements VTLRepository {
         }
     }
 
-    public void createDataset(String name, Structured s) throws RepositoryException {
+    public void createDataset(String name, Dataset s) throws RepositoryException {
         if (this.hasDataset(name)) {
             return;
         }
@@ -216,6 +216,7 @@ public class VTLDatabaseRepository implements VTLRepository {
         } catch (SQLException sql) {
             throw new RepositoryException(sql.getMessage());
         }
+        this.appendDataset(name, s);
     }
     @Override
     public Dataset getDataset(String name) throws RepositoryException {
@@ -225,7 +226,8 @@ public class VTLDatabaseRepository implements VTLRepository {
         try {
             sdmx.repository.vtl.entities.Dataset d2 =  DatasetUtil.findDataset(em, name);
             Structured.DataStructure struct = DatasetUtil.getStructure(em, name);
-            String select = "select * from dataset_"+name;
+            System.out.println(struct.entrySet());
+            String select = "select * from dataset_"+name+";";
             Connection con = pool.getConnection();
             PreparedStatement pst = con.prepareStatement(select);
             ResultSet rs = pst.executeQuery();
@@ -234,11 +236,11 @@ public class VTLDatabaseRepository implements VTLRepository {
             List<List<Object>> obs = new ArrayList<List<Object>>();
             while(rs.next()){
                 List<Object> ob = new ArrayList<Object>();
-                Iterator<String> it = struct.keySet().iterator();
+                Iterator<Entry<String, Component>> it = struct.entrySet().iterator();
                 while(it.hasNext()){
-                    String col = it.next();
-                    int idx = struct.indexOfKey(col);
-                    Object val = rs.getObject(col, struct.get(col).getType());
+                    Entry<String,Component> col = it.next();
+                    int idx = struct.size()-struct.indexOfKey(col.getKey());
+                    Object val = rs.getObject(idx, col.getValue().getType());
                     ob.add(val);
                 }
                 obs.add(ob);
